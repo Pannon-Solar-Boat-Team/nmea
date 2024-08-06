@@ -3,20 +3,18 @@
 #ifndef NMEA___GSV_H
 #define NMEA___GSV_H
 
-#include <nmea/sentence.hpp>
-#include <nmea/field.hpp>
-
 #include <vector>
+
+#include "field.hpp"
+#include "sentence.hpp"
 
 namespace nmea {
 
 /// \brief An NMEA GSV sentence.
-struct gsv
-{
+struct gsv {
     // OBJECTS
     /// \brief A satellite being tracked by the receiver.
-    struct satellite
-    {
+    struct satellite {
         /// \brief The PRN number of the satellite.
         nmea::field<uint8_t> prn;
         /// \brief The elevation of the satellite in degrees.
@@ -45,6 +43,6 @@ struct gsv
     std::vector<satellite> satellites;
 };
 
-}
+}  // namespace nmea
 
-#endif
+#endif  // NMEA___GSV_H

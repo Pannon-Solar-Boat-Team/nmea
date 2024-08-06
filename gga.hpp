@@ -3,27 +3,27 @@
 #ifndef NMEA___GGA_H
 #define NMEA___GGA_H
 
-#include <nmea/sentence.hpp>
-#include <nmea/field.hpp>
+#include <cstdint>
+
+#include "field.hpp"
+#include "sentence.hpp"
 
 namespace nmea {
 
 /// \brief An NMEA GGA sentence.
-struct gga
-{
+struct gga {
     // OBJECTS
     /// \brief Enumerates the potential fix types that can be reported.
-    enum class fix_type
-    {
-        NONE = 0,               ///< No fix.
-        GPS = 1,                ///< GPS fix.
-        DGPS = 2,               ///< Differential GPS fix.
-        PPS = 3,                ///< Pulse Per Second (PPS) fix.
-        RTK = 4,                ///< Real-Time Kinematic (RTK) fix.
-        RTK_FLOAT = 5,          ///< Real-Time Kinematic (RTK) floating point fix.
-        ESTIMATED = 6,          ///< Estimated dead reckoning fix.
-        MANUAL = 7,             ///< Manual input mode.
-        SIMULATION = 8          ///< Simulation mode.
+    enum class fix_type {
+        NONE = 0,       ///< No fix.
+        GPS = 1,        ///< GPS fix.
+        DGPS = 2,       ///< Differential GPS fix.
+        PPS = 3,        ///< Pulse Per Second (PPS) fix.
+        RTK = 4,        ///< Real-Time Kinematic (RTK) fix.
+        RTK_FLOAT = 5,  ///< Real-Time Kinematic (RTK) floating point fix.
+        ESTIMATED = 6,  ///< Estimated dead reckoning fix.
+        MANUAL = 7,     ///< Manual input mode.
+        SIMULATION = 8  ///< Simulation mode.
     };
 
     // CONSTRUCTORS
@@ -56,6 +56,6 @@ struct gga
     nmea::field<uint16_t> dgps_station;
 };
 
-}
+}  // namespace nmea
 
 #endif

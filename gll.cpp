@@ -1,15 +1,14 @@
-#include <nmea/message/gll.hpp>
+#include "gll.hpp"
+
+#include <iomanip>
+#include <sstream>
 
 #include "parse.hpp"
-
-#include <sstream>
-#include <iomanip>
 
 using namespace nmea;
 
 // CONSTRUCTORS
-gll::gll(const nmea::sentence& sentence)
-{
+gll::gll(const nmea::sentence& sentence) {
     // Get talker.
     gll::talker = sentence.talker();
 

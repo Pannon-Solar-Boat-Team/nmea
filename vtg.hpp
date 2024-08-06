@@ -3,15 +3,14 @@
 #ifndef NMEA___VTG_H
 #define NMEA___VTG_H
 
-#include <nmea/sentence.hpp>
-#include <nmea/field.hpp>
-#include <nmea/object/mode.hpp>
+#include "field.hpp"
+#include "mode.hpp"
+#include "sentence.hpp"
 
 namespace nmea {
 
 /// \brief An NMEA VTG sentence.
-struct vtg
-{
+struct vtg {
     // CONSTRUCTORS
     /// \brief Creates a new VTG instance from an NMEA sentence.
     /// \param sentence The NMEA sentence to parse the RMC sentence from.
@@ -32,6 +31,6 @@ struct vtg
     nmea::field<nmea::mode> mode;
 };
 
-}
+}  // namespace nmea
 
 #endif

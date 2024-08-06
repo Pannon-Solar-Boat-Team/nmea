@@ -1,15 +1,14 @@
-#include <nmea/message/gga.hpp>
+#include "gga.hpp"
+
+#include <iomanip>
+#include <sstream>
 
 #include "parse.hpp"
-
-#include <sstream>
-#include <iomanip>
 
 using namespace nmea;
 
 // CONSTRUCTORS
-gga::gga(const nmea::sentence& sentence)
-{
+gga::gga(const nmea::sentence& sentence) {
     // Get talker.
     gga::talker = sentence.talker();
 

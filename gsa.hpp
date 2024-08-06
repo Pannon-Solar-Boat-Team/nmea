@@ -3,39 +3,29 @@
 #ifndef NMEA___GSA_H
 #define NMEA___GSA_H
 
-#include <nmea/sentence.hpp>
-#include <nmea/field.hpp>
-
 #include <vector>
+
+#include "field.hpp"
+#include "sentence.hpp"
 
 namespace nmea {
 
 /// \brief An NMEA GSA sentence.
-struct gsa
-{
+struct gsa {
     // OBJECTS
     /// \brief Enumerates mode status types.
-    enum class mode_type
-    {
-        MANUAL = 0,     ///< Fix type set manually.
-        AUTOMATIC = 1   ///< Fix type set automatically.
+    enum class mode_type {
+        MANUAL = 0,    ///< Fix type set manually.
+        AUTOMATIC = 1  ///< Fix type set automatically.
     };
     /// \brief Enumerates the fix types.
-    enum class fix_type
-    {
-        NONE = 1,       ///< No fix.
-        FIX_2D = 2,     ///< Fix is 2D.
-        FIX_3D = 3      ///< Fix is 3D.
+    enum class fix_type {
+        NONE = 1,    ///< No fix.
+        FIX_2D = 2,  ///< Fix is 2D.
+        FIX_3D = 3   ///< Fix is 3D.
     };
     /// \brief Enumerates the GNSS system types.
-    enum class system_type
-    {
-        QZSS = 0,
-        GPS = 1,
-        GLONASS = 2,
-        GALILEO = 3,
-        BEIDOU = 4
-    };
+    enum class system_type { QZSS = 0, GPS = 1, GLONASS = 2, GALILEO = 3, BEIDOU = 4 };
 
     // CONSTRUCTORS
     /// \brief Creates a new GSA instance from an NMEA sentence.
@@ -61,6 +51,6 @@ struct gsa
     nmea::field<system_type> system;
 };
 
-}
+}  // namespace nmea
 
 #endif

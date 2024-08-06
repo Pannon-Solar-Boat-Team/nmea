@@ -1,12 +1,11 @@
-#include <nmea/message/gsv.hpp>
+#include "gsv.hpp"
 
 #include "parse.hpp"
 
 using namespace nmea;
 
 // CONSTRUCTORS
-gsv::gsv(const nmea::sentence& sentence)
-{
+gsv::gsv(const nmea::sentence& sentence) {
     // Get talker.
     gsv::talker = sentence.talker();
 
@@ -24,22 +23,21 @@ gsv::gsv(const nmea::sentence& sentence)
 
     // Iterate over satellites in message.
     gsv::satellites.reserve(n_entries);
-    for(uint8_t i = 0; i < n_entries; ++i)
-    {
+    for (uint8_t i = 0; i < n_entries; ++i) {
         // Create new satellite struct.
         gsv::satellite satellite;
 
         // Parse PRN.
-        nmea::parse_uint8(satellite.prn, sentence, 3 + i*4);
+        nmea::parse_uint8(satellite.prn, sentence, 3 + i * 4);
 
         // Parse elevation.
-        nmea::parse_uint8(satellite.elevation, sentence, 4 + i*4);
+        nmea::parse_uint8(satellite.elevation, sentence, 4 + i * 4);
 
         // Parse azimuth.
-        nmea::parse_uint16(satellite.azimuth, sentence, 5 + i*4);
+        nmea::parse_uint16(satellite.azimuth, sentence, 5 + i * 4);
 
         // Parse SNR.
-        nmea::parse_uint8(satellite.snr, sentence, 6 + i*4);
+        nmea::parse_uint8(satellite.snr, sentence, 6 + i * 4);
 
         // Add satellite to vector.
         gsv::satellites.emplace_back(satellite);

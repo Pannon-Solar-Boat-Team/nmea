@@ -1,12 +1,11 @@
-#include <nmea/message/rmc.hpp>
+#include "rmc.hpp"
 
 #include "parse.hpp"
 
 using namespace nmea;
 
 // CONSTRUCTORS
-rmc::rmc(const nmea::sentence& sentence)
-{
+rmc::rmc(const nmea::sentence& sentence) {
     // Get talker.
     rmc::talker = sentence.talker();
 
@@ -36,14 +35,12 @@ rmc::rmc(const nmea::sentence& sentence)
     std::string variation_string = sentence.get_field(9);
     std::string direction_string = sentence.get_field(10);
     // Verify that both field strings exist.
-    if(!variation_string.empty() && !direction_string.empty())
-    {
+    if (!variation_string.empty() && !direction_string.empty()) {
         // Create value.
         float magnetic_variation = std::stof(variation_string);
 
         // Apply direction.
-        if(direction_string == "W")
-        {
+        if (direction_string == "W") {
             magnetic_variation *= -1.0F;
         }
 

@@ -3,17 +3,16 @@
 #ifndef NMEA___RMC_H
 #define NMEA___RMC_H
 
-#include <nmea/sentence.hpp>
-#include <nmea/field.hpp>
-#include <nmea/object/status.hpp>
-#include <nmea/object/date.hpp>
-#include <nmea/object/mode.hpp>
+#include "date.hpp"
+#include "field.hpp"
+#include "mode.hpp"
+#include "sentence.hpp"
+#include "status.hpp"
 
 namespace nmea {
 
 /// \brief An NMEA RMC sentence.
-struct rmc
-{
+struct rmc {
     // CONSTRUCTORS
     /// \brief Creates a new RMC instance from an NMEA sentence.
     /// \param sentence The NMEA sentence to parse the RMC sentence from.
@@ -42,6 +41,6 @@ struct rmc
     nmea::field<nmea::mode> mode;
 };
 
-}
+}  // namespace nmea
 
 #endif

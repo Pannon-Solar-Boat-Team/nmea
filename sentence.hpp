@@ -3,6 +3,7 @@
 #ifndef NMEA___SENTENCE_H
 #define NMEA___SENTENCE_H
 
+#include <cstdint>
 #include <string>
 #include <vector>
 
@@ -10,9 +11,8 @@
 namespace nmea {
 
 /// \brief An NMEA 0183 sentence.
-class sentence
-{
-public:
+class sentence {
+   public:
     // CONSTRUCTORS
     /// \brief Creates a new sentence instance from a received NMEA string.
     /// \param nmea_string The NMEA 0183 string to parse.
@@ -49,11 +49,11 @@ public:
     /// \note Ignores fields that do not exist.
     void set_field(uint8_t field, const std::string& value);
     /// \brief Gets the sentence as an NMEA string, with CRLF appended.
-    /// \param encapsulated Indicates if this sentence is an encapsulated type, and should start with '!' instead of '$'.
-    /// \returns The NMEA string representation of the sentence.
-    std::string nmea_string(bool encapsulated = false) const;    
+    /// \param encapsulated Indicates if this sentence is an encapsulated type, and should start
+    /// with '!' instead of '$'. \returns The NMEA string representation of the sentence.
+    std::string nmea_string(bool encapsulated = false) const;
 
-private:
+   private:
     // VARIABLES
     /// \brief The name of the sentence talker.
     std::string m_talker;
@@ -70,6 +70,6 @@ private:
     static std::string checksum(const std::string& nmea_string, std::size_t checksum_index);
 };
 
-}
+}  // namespace nmea
 
 #endif

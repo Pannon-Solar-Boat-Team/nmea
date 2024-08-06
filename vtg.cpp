@@ -1,12 +1,11 @@
-#include <nmea/message/vtg.hpp>
+#include "vtg.hpp"
 
 #include "parse.hpp"
 
 using namespace nmea;
 
 // CONSTRUCTORS
-vtg::vtg(const nmea::sentence& sentence)
-{
+vtg::vtg(const nmea::sentence& sentence) {
     // Get talker.
     vtg::talker = sentence.talker();
 

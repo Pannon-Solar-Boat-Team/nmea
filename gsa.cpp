@@ -1,25 +1,20 @@
-#include <nmea/message/gsa.hpp>
+#include "gsa.hpp"
 
 #include "parse.hpp"
 
 using namespace nmea;
 
 // CONSTRUCTORS
-gsa::gsa(const nmea::sentence& sentence)
-{
+gsa::gsa(const nmea::sentence& sentence) {
     // Get talker.
     gsa::talker = sentence.talker();
 
     // Parse mode.
     std::string mode_string = sentence.get_field(0);
-    if(!mode_string.empty())
-    {
-        if(mode_string == "M")
-        {
+    if (!mode_string.empty()) {
+        if (mode_string == "M") {
             gsa::mode.set(gsa::mode_type::MANUAL);
-        }
-        else if(mode_string == "A")
-        {
+        } else if (mode_string == "A") {
             gsa::mode.set(gsa::mode_type::AUTOMATIC);
         }
     }
@@ -29,16 +24,12 @@ gsa::gsa(const nmea::sentence& sentence)
 
     // Parse satellite IDs.
     gsa::satellites.reserve(12);
-    for(uint8_t i = 0; i < 12; ++i)
-    {
+    for (uint8_t i = 0; i < 12; ++i) {
         // Get current satellite field.
         std::string satellite_string = sentence.get_field(2 + i);
-        if(!satellite_string.empty())
-        {
+        if (!satellite_string.empty()) {
             gsa::satellites.push_back(std::stoul(satellite_string));
-        }
-        else
-        {
+        } else {
             break;
         }
     }

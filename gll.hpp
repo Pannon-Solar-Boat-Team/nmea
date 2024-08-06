@@ -3,16 +3,15 @@
 #ifndef NMEA___GLL_H
 #define NMEA___GLL_H
 
-#include <nmea/sentence.hpp>
-#include <nmea/field.hpp>
-#include <nmea/object/status.hpp>
-#include <nmea/object/mode.hpp>
+#include "field.hpp"
+#include "mode.hpp"
+#include "sentence.hpp"
+#include "status.hpp"
 
 namespace nmea {
 
 /// \brief An NMEA GLL sentence.
-struct gll
-{
+struct gll {
     // CONSTRUCTORS
     /// \brief Creates a new GLL instance from an NMEA sentence.
     /// \param sentence The NMEA sentence to parse the GLL sentence from.
@@ -33,6 +32,6 @@ struct gll
     nmea::field<nmea::mode> mode;
 };
 
-}
+}  // namespace nmea
 
 #endif
